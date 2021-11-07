@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Verify from "./Components/Verify";
+import Heading from "./Components/Heading";
 
 function App() {
+  const [modal, setModal] = useState(false);
+
+  function toggleModal() {
+    setModal(!modal);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Heading />
+      <Verify toggleModal={toggleModal} modal={modal} />
+      <button className="verify" onClick={toggleModal}>
+        Verify Phone Number
+      </button>
     </div>
   );
 }
